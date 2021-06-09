@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ass10</title>
+</head>
+<body>
+ <h1 style="color: mediumaquamarine">
+{% with elart = get_flashed_messages() %}
+   {% if elart %}
+      {% for message in elart %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+</h1>
+
+
+ {% if users %}
+        <h2 style="color: mediumaquamarine">Users List</h2>
+        {% for user in users %}
+            <li>
+                <h3 style="display: inline">user {{ loop.index }}:</h3>
+                {{ user.ID }} {{ user.fname }} {{ user.lname }}
+            </li>
+        {% endfor %}
+ {% endif %}
+
+<h2>Create New User</h2>
+    <form action = "/insert_user" method="POST">
+       <label for = "name">Please Enter First Name: </label>
+       <br>
+       <input name="name" >
+        <br>
+       <label for = "lastname">Please Enter Last Name: </label>
+       <br>
+       <input name="lastname" >
+        <br>
+       <label for = "id">Please Enter ID: </label>
+       <br>
+       <input name="id" >
+       <br>
+       <br>
+       <input type="submit">
+    </form>
+
+<h2>Update User's Name</h2>
+    <form action = "/update" method="POST">
+       <label for = "id">Please Enter ID</label>
+       <br>
+       <input name="id" >
+        <br>
+       <label for = "name">Choose Different First Name </label>
+       <br>
+       <input name="name">
+       <br>
+        <label for = "lastname">Choose Different Last Name </label>
+       <br>
+       <input name="lastname" >
+       <br>
+        <br>
+       <input type="submit">
+    </form>
+
+<h2>Delete User</h2>
+    <form action="/delete" method="GET">
+        <label for="id"> Please Enter User's ID:</label>
+        <input name = "id" type="number">
+        <input type="submit">
+    </form>
+<br>
+
+</body>
+</html>
